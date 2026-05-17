@@ -1,5 +1,5 @@
 {
-  "name": "art-grading-system-yenie",
+  "name": "art-grading-system",
   "version": "1.0.0",
   "description": "Art Grading System",
   "main": "server.js",
