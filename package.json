@@ -7,8 +7,8 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "@supabase/supabase-client": "^2.43.0",
     "cors": "^2.8.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "@supabase/supabase-client": "^2.43.0"
   }
 }
