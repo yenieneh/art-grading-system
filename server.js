@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 const SUPABASE_URL = 'https://eldpojhzopiyantidjra.supabase.co';
-const SUPABASE_KEY = 'ከቴሌግራም_ያመጣኸው_ረጅሙ_የአኖን_ኪይ_እዚህ_ይግባ';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsZHBvamh6b3BpeWFudGlkanJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwNTAzNTEsImV4cCI6MjA5NDYyNjM1MX0.Q_FqrCry3wDeZtubCk8LV-GwwmESi-LlruaC1ulad8A';
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 app.post('/save-art-grade', async (req, res) => {
