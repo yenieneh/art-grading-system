@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>የኪነ-ጥበብ ውጤት መቆጣጠሪያ</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
+        .box { max-width: 500px; background: white; margin: 20px auto; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #2c3e50; }
+        label { display: block; margin-top: 10px; font-weight: bold; color: #34495e; }
+        input, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; background-color: #27ae60; color: white; padding: 12px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>🎨 የArt ትምህርት ውጤት መያዣ</h2>
+    <form id="artForm">
+        <label>የተማሪው ሙሉ ስም</label>
+        <input type="text" id="student_name" placeholder="ስም ያስገቡ" required>
+
+        <label>ክፍል / ሴክሽን</label>
+        <select id="student_class">
+            <option>7ኛ ክፍል - A</option>
+            <option>7ኛ ክፍል - B</option>
+            <option>8ኛ ክፍል - A</option>
+            <option>8ኛ ክፍል - B</option>
+        </select>
+
+        <label>ተሳትፎ (30%)</label>
+        <input type="number" id="p_score" max="30" min="0" required>
+
+        <label>ፈጠራ (30%)</label>
+        <input type="number" id="c_score" max="30" min="0" required>
+
+        <label>ቴክኒክ (30%)</label>
+        <input type="number" id="t_score" max="30" min="0" required>
+
+        <label>ማብራሪያ (10%)</label>
+        <input type="number" id="r_score" max="10" min="0" required>
+
+        <button type="button" onclick="saveData()">ውጤቱን መዝግብ</button>
+    </form>
+</div>
+
+<script>
+async function saveData() {
+    const name = document.getElementById("student_name").value;
+    const s_class = document.getElementById("student_class").value;
+    const participation = document.getElementById("p_score").value;
+    const creativity = document.getElementById("c_score").value;
+    const technique = document.getElementById("t_score").value;
+    const reflection = document.getElementById("r_score").value;
+
+    if(!name || !participation || !creativity || !technique || !reflection) {
+        alert("እባክዎ ሁሉንም ሳጥኖች በትክክል ይሙሉ!");
+        return;
+    }
+
+    try {
+        // ይህ ሊንክ ቆይቶ በሬንደር (Render) በሚሰጠን እውነተኛ ኦንላይን ሊንክ ይቀየራል
+        const response = await fetch('https://YOUR_BACKEND_LINK_HERE.onrender.com/save-art-grade', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, s_class, participation, creativity, technique, reflection })
+        });
+        const result = await response.json();
+        if(result.status === 'success') {
+            alert(result.message);
+            document.getElementById("artForm").reset();
+        } else {
+            alert("ስህተት፦ " + result.message);
+        }
+    } catch (error) {
+        alert("ከኦንላይን ሰርቨሩ ጋር መገናኘት አልተቻለም!");
+    }
+}
+</script>
+
+</body>
+</html>
