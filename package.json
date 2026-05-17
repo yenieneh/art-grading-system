@@ -1,1 +1,15 @@
+{
+  "name": "art-grading-system",
+  "version": "1.0.0",
+  "description": "Art Grading System Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-client": "^2.43.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
 
